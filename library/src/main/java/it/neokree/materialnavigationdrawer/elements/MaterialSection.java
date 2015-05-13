@@ -134,6 +134,8 @@ public class MaterialSection<Fragment> implements View.OnTouchListener, View.OnC
             textColor = values.getColor(R.styleable.MaterialSection_sectionColorText, 0x000);
             notificationColor = values.getColor(R.styleable.MaterialSection_sectionColorNotification, 0x000);
 
+            boolean rippleDelayClick = values.getBoolean(R.styleable.MaterialSection_sectionRippleDelayClick, true);
+
             // set text color into the view
             if (textColor != 0x000) {
                 text.setTextColor(textColor);
@@ -143,11 +145,12 @@ public class MaterialSection<Fragment> implements View.OnTouchListener, View.OnC
             }
 
             // set background color into the view
-            if (!rippleAnimationSupport())
+            if (!rippleAnimationSupport()) {
                 view.setBackgroundColor(colorUnpressed);
-            else {
+            } else {
                 ripple.setRippleBackground(colorUnpressed);
                 ripple.setRippleColor(colorPressed);
+                ripple.setRippleDelayClick(rippleDelayClick);
             }
 
         } finally {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="MaterialNavigationDrawerTheme" parent="Theme.AppCompat.NoActionBar" >
+    <style name="MaterialNavigationDrawerTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="drawerType">@integer/DRAWERTYPE_ACCOUNTS</item>
         <item name="drawerColor">#ff303030</item>
         <item name="rippleBackport">false</item>
@@ -16,7 +16,7 @@
         <item name="toolbarElevation">false</item>
     </style>
 
-    <style name="MaterialNavigationDrawerTheme.Light" parent="Theme.AppCompat.Light.NoActionBar" >
+    <style name="MaterialNavigationDrawerTheme.Light" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="drawerType">@integer/DRAWERTYPE_ACCOUNTS</item>
         <item name="drawerColor">#ffeeeeee</item>
         <item name="rippleBackport">false</item>
@@ -31,7 +31,7 @@
         <item name="toolbarElevation">false</item>
     </style>
 
-    <style name="MaterialNavigationDrawerTheme.Light.DarkActionBar" parent="Theme.AppCompat.Light.NoActionBar" >
+    <style name="MaterialNavigationDrawerTheme.Light.DarkActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
         <item name="popupTheme">@style/Base.V21.Theme.AppCompat.Light.Dialog</item>
         <item name="drawerType">@integer/DRAWERTYPE_ACCOUNTS</item>
@@ -48,13 +48,13 @@
         <item name="toolbarElevation">false</item>
     </style>
 
-    <style name="MaterialNavigationDrawerTheme.Light.TranslucentKitKatStatusBar" parent="MaterialNavigationDrawerTheme.Light" />
+    <style name="MaterialNavigationDrawerTheme.Light.TranslucentKitKatStatusBar" parent="MaterialNavigationDrawerTheme.Light"/>
 
-    <style name="MaterialNavigationDrawerTheme.TranslucentKitKatStatusBar" parent="MaterialNavigationDrawerTheme" />
+    <style name="MaterialNavigationDrawerTheme.TranslucentKitKatStatusBar" parent="MaterialNavigationDrawerTheme"/>
 
-    <style name="MaterialNavigationDrawerTheme.Light.DarkActionBar.TranslucentKitKatStatusBar" parent="MaterialNavigationDrawerTheme.Light.DarkActionBar" />
+    <style name="MaterialNavigationDrawerTheme.Light.DarkActionBar.TranslucentKitKatStatusBar" parent="MaterialNavigationDrawerTheme.Light.DarkActionBar"/>
 
-    <style name="MaterialSectionTheme" >
+    <style name="MaterialSectionTheme">
         <item name="sectionColorIcon">#FFF</item>
         <item name="sectionColorText">#FFF</item>
         <item name="sectionColorNotification">#FFF</item>
@@ -63,7 +63,7 @@
         <item name="sectionBackgroundColor">#00FFFFFF</item>
     </style>
 
-    <style name="MaterialSectionTheme.Light" >
+    <style name="MaterialSectionTheme.Light">
         <item name="sectionColorIcon">#000000</item>
         <item name="sectionColorText">#000000</item>
         <item name="sectionColorNotification">#000000</item>

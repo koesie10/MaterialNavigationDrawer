@@ -66,6 +66,9 @@
             android:name=".functionalities.RippleBackport"
             android:theme="@style/RippleBackport"/>
         <activity
+            android:name=".functionalities.NoRippleDelayClick"
+            android:theme="@style/RippleNoDelayClick"/>
+        <activity
             android:name=".functionalities.UniqueToolbarColor"
             android:theme="@style/UniqueToolbarColor"/>
         <activity

@@ -25,6 +25,7 @@ import it.neokree.example.functionalities.DefaultSectionLoaded;
 import it.neokree.example.functionalities.KitkatStatusBar;
 import it.neokree.example.functionalities.LearningPatternDisabled;
 import it.neokree.example.functionalities.MultiPane;
+import it.neokree.example.functionalities.NoRippleDelayClick;
 import it.neokree.example.functionalities.RealColorSections;
 import it.neokree.example.functionalities.RippleBackport;
 import it.neokree.example.functionalities.UniqueToolbarColor;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         addSample("Functionality: unique Toolbar Color", UniqueToolbarColor.class);
         addSample("Functionality: ripple backport support", RippleBackport.class);
+        addSample("Functionality: ripple backport support: no delay click", NoRippleDelayClick.class);
         addSample("Functionality: multi pane support for tablet", MultiPane.class);
         addSample("Functionality: custom section under account list", CustomAccountSection.class);
         addSample("Functionality: Kitkat trasluncent status bar", KitkatStatusBar.class);
