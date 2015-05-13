@@ -10,7 +10,7 @@ import it.neokree.example.mockedFragments.FragmentButton;
 import it.neokree.example.mockedFragments.FragmentIndex;
 import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
 
-public class MockedAccount extends MaterialNavigationDrawer {
+public class MockedAccountLight extends MaterialNavigationDrawer {
     @Override
     public void init(Bundle savedInstanceState) {
         // set header data

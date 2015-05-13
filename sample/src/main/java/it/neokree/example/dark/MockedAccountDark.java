@@ -10,12 +10,15 @@ import it.neokree.example.mockedFragments.FragmentButton;
 import it.neokree.example.mockedFragments.FragmentIndex;
 import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
 
-public class ImageDrawerHeader extends MaterialNavigationDrawer {
+public class MockedAccountDark extends MaterialNavigationDrawer {
     @Override
     public void init(Bundle savedInstanceState) {
 
-        // set the header image
-        this.setDrawerHeaderImage(R.drawable.mat2);
+        // set header data
+        setDrawerHeaderImage(R.drawable.mat2);
+        setUsername("My App Name");
+        setUserEmail("My version build");
+        //setFirstAccountPhoto(getResources().getDrawable(R.drawable.photo));
 
         // create sections
         this.addSection(newSection("Section 1", new FragmentIndex()));

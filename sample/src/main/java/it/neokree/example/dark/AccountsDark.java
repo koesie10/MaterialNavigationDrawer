@@ -12,7 +12,7 @@ import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
 import it.neokree.materialnavigationdrawer.elements.MaterialAccount;
 import it.neokree.materialnavigationdrawer.elements.listeners.MaterialAccountListener;
 
-public class Accounts extends MaterialNavigationDrawer implements MaterialAccountListener {
+public class AccountsDark extends MaterialNavigationDrawer implements MaterialAccountListener {
     @Override
     public void init(Bundle savedInstanceState) {
 

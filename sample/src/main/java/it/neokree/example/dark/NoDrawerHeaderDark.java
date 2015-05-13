@@ -3,8 +3,6 @@ package it.neokree.example.dark;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
 
 import it.neokree.example.R;
 import it.neokree.example.mockedActivity.Settings;
@@ -12,14 +10,9 @@ import it.neokree.example.mockedFragments.FragmentButton;
 import it.neokree.example.mockedFragments.FragmentIndex;
 import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
 
-public class CustomDrawerHeader extends MaterialNavigationDrawer {
+public class NoDrawerHeaderDark extends MaterialNavigationDrawer {
     @Override
     public void init(Bundle savedInstanceState) {
-
-        // create and set the header
-        View view = LayoutInflater.from(this).inflate(R.layout.custom_drawer, null);
-        setDrawerHeaderCustom(view);
-
         // create sections
         this.addSection(newSection("Section 1", new FragmentIndex()));
         this.addSection(newSection("Section 2", new FragmentIndex()));

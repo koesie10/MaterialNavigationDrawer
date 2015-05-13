@@ -10,7 +10,7 @@ import it.neokree.example.mockedFragments.FragmentButton;
 import it.neokree.example.mockedFragments.FragmentIndex;
 import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
 
-public class ImageDrawerHeader extends MaterialNavigationDrawer {
+public class ImageDrawerHeaderLight extends MaterialNavigationDrawer {
     @Override
     public void init(Bundle savedInstanceState) {
         // set the header image

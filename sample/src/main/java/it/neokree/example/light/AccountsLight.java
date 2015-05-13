@@ -3,21 +3,30 @@ package it.neokree.example.light;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
 
 import it.neokree.example.R;
 import it.neokree.example.mockedActivity.Settings;
 import it.neokree.example.mockedFragments.FragmentButton;
 import it.neokree.example.mockedFragments.FragmentIndex;
 import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
+import it.neokree.materialnavigationdrawer.elements.MaterialAccount;
+import it.neokree.materialnavigationdrawer.elements.listeners.MaterialAccountListener;
 
-public class CustomDrawerHeader extends MaterialNavigationDrawer {
+public class AccountsLight extends MaterialNavigationDrawer implements MaterialAccountListener {
     @Override
     public void init(Bundle savedInstanceState) {
-        // create and set the header
-        View view = LayoutInflater.from(this).inflate(R.layout.custom_drawer, null);
-        setDrawerHeaderCustom(view);
+        // add accounts
+        MaterialAccount account = new MaterialAccount(this.getResources(), "NeoKree", "neokree@gmail.com", R.drawable.photo, R.drawable.bamboo);
+        this.addAccount(account);
+
+        MaterialAccount account2 = new MaterialAccount(this.getResources(), "Hatsune Miky", "hatsune.miku@example.com", R.drawable.photo2, R.drawable.mat2);
+        this.addAccount(account2);
+
+        MaterialAccount account3 = new MaterialAccount(this.getResources(), "Example", "example@example.com", R.drawable.photo, R.drawable.mat3);
+        this.addAccount(account3);
+
+        // set listener
+        this.setAccountListener(this);
 
         // create sections
         this.addSection(newSection("Section 1", new FragmentIndex()));
@@ -27,5 +36,15 @@ public class CustomDrawerHeader extends MaterialNavigationDrawer {
 
         // create bottom section
         this.addBottomSection(newSection("Bottom Section", R.drawable.ic_settings_black_24dp, new Intent(this, Settings.class)));
+    }
+
+    @Override
+    public void onAccountOpening(MaterialAccount account) {
+
+    }
+
+    @Override
+    public void onChangeAccount(MaterialAccount newAccount) {
+
     }
 }

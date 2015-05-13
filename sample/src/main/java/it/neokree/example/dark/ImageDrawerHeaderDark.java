@@ -1,4 +1,4 @@
-package it.neokree.example.light;
+package it.neokree.example.dark;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,9 +10,13 @@ import it.neokree.example.mockedFragments.FragmentButton;
 import it.neokree.example.mockedFragments.FragmentIndex;
 import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
 
-public class NoDrawerHeader extends MaterialNavigationDrawer {
+public class ImageDrawerHeaderDark extends MaterialNavigationDrawer {
     @Override
     public void init(Bundle savedInstanceState) {
+
+        // set the header image
+        this.setDrawerHeaderImage(R.drawable.mat2);
+
         // create sections
         this.addSection(newSection("Section 1", new FragmentIndex()));
         this.addSection(newSection("Section 2", new FragmentIndex()));

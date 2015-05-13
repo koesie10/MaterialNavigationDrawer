@@ -1,4 +1,9 @@
 <resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">#8bc34a</item>
+        <item name="colorPrimaryDark">#558b2f</item>
+        <item name="colorAccent">#FFFFFF</item>
+    </style>
     <!-- Light Themes-->
 
     <!-- Mocked Account -->

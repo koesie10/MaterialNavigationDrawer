@@ -1,4 +1,4 @@
-package it.neokree.example.dark;
+package it.neokree.example.light;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -10,16 +10,9 @@ import it.neokree.example.mockedFragments.FragmentButton;
 import it.neokree.example.mockedFragments.FragmentIndex;
 import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
 
-public class MockedAccount extends MaterialNavigationDrawer {
+public class NoDrawerHeaderLight extends MaterialNavigationDrawer {
     @Override
     public void init(Bundle savedInstanceState) {
-
-        // set header data
-        setDrawerHeaderImage(R.drawable.mat2);
-        setUsername("My App Name");
-        setUserEmail("My version build");
-        //setFirstAccountPhoto(getResources().getDrawable(R.drawable.photo));
-
         // create sections
         this.addSection(newSection("Section 1", new FragmentIndex()));
         this.addSection(newSection("Section 2", new FragmentIndex()));
