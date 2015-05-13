@@ -49,6 +49,7 @@ import it.neokree.materialnavigationdrawer.elements.MaterialSection;
 import it.neokree.materialnavigationdrawer.elements.MaterialSubheader;
 import it.neokree.materialnavigationdrawer.elements.listeners.MaterialAccountListener;
 import it.neokree.materialnavigationdrawer.elements.listeners.MaterialSectionListener;
+import it.neokree.materialnavigationdrawer.elements.listeners.MaterialSectionSelectionListener;
 import it.neokree.materialnavigationdrawer.util.MaterialActionBarDrawerToggle;
 import it.neokree.materialnavigationdrawer.util.MaterialDrawerLayout;
 import it.neokree.materialnavigationdrawer.util.TypefaceManager;
@@ -340,6 +341,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     };
     private MaterialAccountListener accountListener;
     private DrawerLayout.DrawerListener drawerListener;
+    private MaterialSectionSelectionListener sectionSelectionListener;
 
     /**
      * Do not Override this method!!! <br>
@@ -928,7 +930,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
      * <li>set the section color to the toolbar</li>
      * <li>open/call the target</li>
      * </ul>
-     * <p>
+     * <p/>
      * This method is equal to a user tap on a drawer section.
      *
      * @param section the section which is replaced
@@ -983,11 +985,12 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
         if (!isCurrentFragmentChild) {// remove the last child from the stack
             childFragmentStack.remove(childFragmentStack.size() - 1);
             childTitleStack.remove(childTitleStack.size() - 1);
-        } else
+        } else {
             for (int i = childFragmentStack.size() - 1; i >= 0; i--) { // if a section is clicked when user is into a child remove all childs from stack
                 childFragmentStack.remove(i);
                 childTitleStack.remove(i);
             }
+        }
 
         // add to the childStack the Fragment and title
         childFragmentStack.add(fragment);
@@ -1268,6 +1271,10 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
                 }
             }
         }
+
+        if (sectionSelectionListener != null) {
+            sectionSelectionListener.onSelectSection(section);
+        }
     }
 
     protected int darkenColor(int color) {
@@ -1350,6 +1357,10 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
         this.drawerListener = listener;
     }
 
+    public void setSectionSelectionListener(MaterialSectionSelectionListener listener) {
+        this.sectionSelectionListener = listener;
+    }
+
     public void addMultiPaneSupport() {
         this.multiPaneSupport = true;
     }
@@ -1377,7 +1388,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
 
     /**
      * Set the HomeAsUpIndicator that is visible when user navigate to a fragment child
-     * <p>
+     * <p/>
      * N.B. call this method AFTER the init() to leave the time to instantiate the ActionBarDrawerToggle
      *
      * @param resId the id to resource drawable to use as indicator
@@ -1884,7 +1895,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
 
     /**
      * Get a setted section knowing his title
-     * <p>
+     * <p/>
      * N.B. this search only into section list and bottom section list.
      *
      * @param title is the title of the section
@@ -1907,7 +1918,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
 
     /**
      * Get the section list
-     * <p>
+     * <p/>
      * N.B. The section list contains the bottom sections
      *
      * @return the list of sections setted
