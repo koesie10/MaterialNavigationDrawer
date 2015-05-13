@@ -1,6 +1,8 @@
 MaterialNavigationDrawer
 ========================
 
+[ ![Download](https://api.bintray.com/packages/koesie10/maven/MaterialNavigationDrawer/images/download.svg) ](https://bintray.com/koesie10/maven/MaterialNavigationDrawer/_latestVersion)
+
 Navigation Drawer Activity with Material design style and simplified methods.
 
 This library requires API 10+.
