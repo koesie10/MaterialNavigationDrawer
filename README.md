@@ -1,32 +1,30 @@
 MaterialNavigationDrawer
 ========================
 
-Navigation Drawer Activity with material design style and simplified methods<br>
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-MaterialNavigationDrawer-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1114)&ensp;&ensp;&ensp;&ensp;&ensp;[![Donate](https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=K4GJELZKNEF68)
+Navigation Drawer Activity with Material design style and simplified methods.
 
-It requires 10+ API and android support v7 (Toolbar)<br>
-
-[Download example apk](https://raw.github.com/neokree/MaterialNavigationDrawer/master/example.apk)<br>
-
-If you are using MaterialNavigationDrawer in your app and would like to be listed here, please let me know via [email](mailto:neokree@gmail.com)! <br>
+This library requires API 10+.
 
 ## Set up a Navigation Drawer
-check the [wiki page](https://github.com/neokree/MaterialNavigationDrawer/wiki/Set-Up-a-Navigation-Drawer-Activity)
+Check the [wiki page](https://github.com/neokree/MaterialNavigationDrawer/wiki/Set-Up-a-Navigation-Drawer-Activity)
 
 ## How to import
 Add this to your build.gradle:
 ```java 
 repositories {
-    mavenCentral()
+    maven {
+        url  "http://dl.bintray.com/koesie10/maven" 
+    }
 }
 
 dependencies {
-    compile 'it.neokree:MaterialNavigationDrawer:1.3.3'
+    compile 'com.koenv:MaterialNavigationDrawer:1.3.4'
 }
 ```
 
-You don't know how to do something? Visit the [wiki](https://github.com/neokree/MaterialNavigationDrawer/wiki)!<br>
-You need some examples? See the [example project](https://github.com/neokree/MaterialNavigationDrawer/tree/master/MaterialNavigationDrawer)!
+You don't know how to do something? Visit the [wiki](https://github.com/neokree/MaterialNavigationDrawer/wiki)!
+
+You need some examples? See the [example project](https://github.com/koesie10/MaterialNavigationDrawer/tree/master/sample).
 
 ### Useful issues
 For open a useful issue, please follow this little guide:
@@ -37,11 +35,11 @@ For open a useful issue, please follow this little guide:
 ### External libraries used
 [Material-Ripple](https://github.com/balysv/material-ripple)
 
-<img src="https://raw.github.com/neokree/MaterialNavigationDrawer/master/art/screen1.jpg" alt="screenshot" width="300px" height="auto" />
-<img src="https://raw.github.com/neokree/MaterialNavigationDrawer/master/art/screen2.jpg" alt="screenshot" width="300px" height="auto" />
-<img src="https://raw.github.com/neokree/MaterialNavigationDrawer/master/art/screen3.jpg" alt="screenshot" width="300px" height="auto" />
-<img src="https://raw.github.com/neokree/MaterialNavigationDrawer/master/art/screen4.jpg" alt="screenshot" width="300px" height="auto" />
-<img src="https://raw.github.com/neokree/MaterialNavigationDrawer/master/art/screen6.jpg" alt="screenshot" width="300px" height="auto" />
-<img src="https://raw.github.com/neokree/MaterialNavigationDrawer/master/art/screen7.jpg" alt="screenshot" width="300px" height="auto" />
-<img src="https://raw.github.com/neokree/MaterialNavigationDrawer/master/art/screen8.jpg" alt="screenshot" width="300px" height="auto" />
-<img src="https://raw.github.com/neokree/MaterialNavigationDrawer/master/art/screen5.jpg" alt="screenshot" width="600px" height="auto" />
+<img src="https://raw.github.com/koesie10/MaterialNavigationDrawer/master/art/screen1.jpg" alt="screenshot" width="300px" height="auto" />
+<img src="https://raw.github.com/koesie10/MaterialNavigationDrawer/master/art/screen2.jpg" alt="screenshot" width="300px" height="auto" />
+<img src="https://raw.github.com/koesie10/MaterialNavigationDrawer/master/art/screen3.jpg" alt="screenshot" width="300px" height="auto" />
+<img src="https://raw.github.com/koesie10/MaterialNavigationDrawer/master/art/screen4.jpg" alt="screenshot" width="300px" height="auto" />
+<img src="https://raw.github.com/koesie10/MaterialNavigationDrawer/master/art/screen6.jpg" alt="screenshot" width="300px" height="auto" />
+<img src="https://raw.github.com/koesie10/MaterialNavigationDrawer/master/art/screen7.jpg" alt="screenshot" width="300px" height="auto" />
+<img src="https://raw.github.com/koesie10/MaterialNavigationDrawer/master/art/screen8.jpg" alt="screenshot" width="300px" height="auto" />
+<img src="https://raw.github.com/koesie10/MaterialNavigationDrawer/master/art/screen5.jpg" alt="screenshot" width="600px" height="auto" />

@@ -923,14 +923,15 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     }
 
     /**
-     * Set the section informations.<br />
+     * Set the section informations.
+     *
      * In short:
      * <ul>
      * <li>set the section title into the toolbar</li>
      * <li>set the section color to the toolbar</li>
      * <li>open/call the target</li>
      * </ul>
-     * <p/>
+     *
      * This method is equal to a user tap on a drawer section.
      *
      * @param section the section which is replaced
@@ -973,7 +974,8 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     }
 
     /**
-     * Set the fragment to the activity content.<br />
+     * Set the fragment to the activity content.
+     * 
      * N.B. If you want to support the master/child flow, please consider to use setFragmentChild instead
      *
      * @param fragment to replace into the main content
@@ -1388,7 +1390,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
 
     /**
      * Set the HomeAsUpIndicator that is visible when user navigate to a fragment child
-     * <p/>
+     *
      * N.B. call this method AFTER the init() to leave the time to instantiate the ActionBarDrawerToggle
      *
      * @param resId the id to resource drawable to use as indicator
@@ -1895,7 +1897,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
 
     /**
      * Get a setted section knowing his title
-     * <p/>
+     *
      * N.B. this search only into section list and bottom section list.
      *
      * @param title is the title of the section
@@ -1918,7 +1920,6 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
 
     /**
      * Get the section list
-     * <p/>
      * N.B. The section list contains the bottom sections
      *
      * @return the list of sections setted
