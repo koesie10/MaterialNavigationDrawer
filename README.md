@@ -8,7 +8,7 @@ Navigation Drawer Activity with Material design style and simplified methods.
 This library requires API 10+.
 
 ## Set up a Navigation Drawer
-Check the [wiki page](https://github.com/neokree/MaterialNavigationDrawer/wiki/Set-Up-a-Navigation-Drawer-Activity)
+Check the [wiki page](https://github.com/koesie10/MaterialNavigationDrawer/wiki/Set-Up-a-Navigation-Drawer-Activity)
 
 ## How to import
 Add this to your build.gradle:
@@ -24,7 +24,7 @@ dependencies {
 }
 ```
 
-You don't know how to do something? Visit the [wiki](https://github.com/neokree/MaterialNavigationDrawer/wiki)!
+You don't know how to do something? Visit the [wiki](https://github.com/koesie10/MaterialNavigationDrawer/wiki)!
 
 You need some examples? See the [example project](https://github.com/koesie10/MaterialNavigationDrawer/tree/master/sample).
 
