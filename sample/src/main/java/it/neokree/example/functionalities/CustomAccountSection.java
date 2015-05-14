@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.Toast;
-
 import it.neokree.example.R;
 import it.neokree.example.mockedActivity.Settings;
 import it.neokree.example.mockedFragments.FragmentButton;

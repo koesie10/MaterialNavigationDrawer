@@ -10,7 +10,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import it.neokree.materialnavigationdrawer.R;
 import it.neokree.materialnavigationdrawer.util.Utils;
 

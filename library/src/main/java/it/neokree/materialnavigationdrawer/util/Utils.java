@@ -17,7 +17,6 @@ import android.os.Build;
 import android.view.Display;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
-
 import java.util.Locale;
 
 /**
@@ -37,10 +36,11 @@ public class Utils {
                 return (int) (res.getDisplayMetrics().widthPixels - (56 * res.getDisplayMetrics().density));
             }
         } else { // for devices without smallestScreenWidthDp reference calculate if device screen is over 600 dp
-            if ((res.getDisplayMetrics().widthPixels / res.getDisplayMetrics().density) >= 600 || res.getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
+            if ((res.getDisplayMetrics().widthPixels / res.getDisplayMetrics().density) >= 600 || res.getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 return (int) (320 * res.getDisplayMetrics().density);
-            else
+            } else {
                 return (int) (res.getDisplayMetrics().widthPixels - (56 * res.getDisplayMetrics().density));
+            }
         }
     }
 

@@ -15,9 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.balysv.materialripple.MaterialRippleLayout;
-
 import it.neokree.materialnavigationdrawer.R;
 import it.neokree.materialnavigationdrawer.elements.listeners.MaterialSectionListener;
 import it.neokree.materialnavigationdrawer.util.Utils;
@@ -324,14 +322,16 @@ public class MaterialSection<Fragment> implements View.OnTouchListener, View.OnC
 
     public void setIcon(Drawable icon) {
         this.icon.setImageDrawable(icon);
-        if (!realColor)
+        if (!realColor) {
             this.icon.setColorFilter(iconColor);
+        }
     }
 
     public void setIcon(Bitmap icon) {
         this.icon.setImageBitmap(icon);
-        if (!realColor)
+        if (!realColor) {
             this.icon.setColorFilter(iconColor);
+        }
     }
 
     public void setTarget(Fragment target) {
@@ -358,8 +358,9 @@ public class MaterialSection<Fragment> implements View.OnTouchListener, View.OnC
     public void setPressingColor(int color) {
         colorPressed = color;
 
-        if (rippleAnimationSupport())
+        if (rippleAnimationSupport()) {
             ripple.setRippleColor(colorPressed);
+        }
     }
 
     // alias of setColorUnpressed
@@ -379,10 +380,11 @@ public class MaterialSection<Fragment> implements View.OnTouchListener, View.OnC
         colorSelected = color;
 
         if (isSelected()) {
-            if (rippleAnimationSupport())
+            if (rippleAnimationSupport()) {
                 ripple.setRippleBackground(colorSelected);
-            else
+            } else {
                 view.setBackgroundColor(colorSelected);
+            }
         }
     }
 
@@ -454,16 +456,19 @@ public class MaterialSection<Fragment> implements View.OnTouchListener, View.OnC
             }
         }
 
-        if (listener != null)
+        if (listener != null) {
             listener.onClick(this);
+        }
 
         // se la sezione ha come target l'activity, dopo che questa viene avviata si deseleziona.
-        if (this.getTarget() == TARGET_ACTIVITY)
+        if (this.getTarget() == TARGET_ACTIVITY) {
             this.unSelect();
+        }
 
         // si fa arrivare il click anche allo sviluppatore
-        if (this.getTarget() == TARGET_LISTENER && targetListener != null)
+        if (this.getTarget() == TARGET_LISTENER && targetListener != null) {
             this.targetListener.onClick(this);
+        }
     }
 
     private boolean rippleAnimationSupport() {

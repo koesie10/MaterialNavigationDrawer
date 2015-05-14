@@ -38,11 +38,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 import it.neokree.materialnavigationdrawer.elements.Element;
 import it.neokree.materialnavigationdrawer.elements.MaterialAccount;
 import it.neokree.materialnavigationdrawer.elements.MaterialSection;
@@ -54,6 +49,9 @@ import it.neokree.materialnavigationdrawer.util.MaterialActionBarDrawerToggle;
 import it.neokree.materialnavigationdrawer.util.MaterialDrawerLayout;
 import it.neokree.materialnavigationdrawer.util.TypefaceManager;
 import it.neokree.materialnavigationdrawer.util.Utils;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Activity that extends ActionBarActivity with a Navigation Drawer with Material Design style
@@ -325,15 +323,17 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
                 notifyAccountDataChanged();
 
                 // call change account method
-                if (accountListener != null)
+                if (accountListener != null) {
                     accountListener.onChangeAccount(account);
+                }
 
                 // change account list
                 accountSwitcherListener.onClick(null);
 
                 // close drawer
-                if (!deviceSupportMultiPane())
+                if (!deviceSupportMultiPane()) {
                     layout.closeDrawer(drawer);
+                }
             }
         }
     };
@@ -351,8 +351,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     private MaterialSectionSelectionListener sectionSelectionListener;
 
     /**
-     * Do not Override this method!!! <br>
-     * Use init() instead
+     * Do not Override this method!!! <br> Use init() instead
      */
     @SuppressWarnings("unchecked")
     @Override
@@ -382,10 +381,11 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
         theme.resolveAttribute(R.attr.toolbarElevation, typedValue, false);
         toolbarElevation = typedValue.data != 0;
 
-        if (drawerHeaderType == DRAWERHEADER_ACCOUNTS)
+        if (drawerHeaderType == DRAWERHEADER_ACCOUNTS) {
             super.setContentView(R.layout.activity_material_navigation_drawer);
-        else
+        } else {
             super.setContentView(R.layout.activity_material_navigation_drawer_customheader);
+        }
 
         // init Typeface
         fontManager = new TypefaceManager(this.getAssets());
@@ -429,8 +429,9 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
                 userButtonSwitcher.setOnClickListener(accountSwitcherListener);
             }
 
-        } else
+        } else {
             customDrawerHeader = (LinearLayout) this.findViewById(R.id.drawer_header);
+        }
         sections = (LinearLayout) this.findViewById(R.id.sections);
         bottomSections = (LinearLayout) this.findViewById(R.id.bottom_sections);
 
@@ -449,9 +450,11 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
             userphoto.setOnClickListener(currentAccountListener);
             if (singleAccount)
 
+            {
                 usercover.setOnClickListener(currentAccountListener);
-            else
+            } else {
                 usercover.setOnClickListener(accountSwitcherListener);
+            }
             userSecondPhoto.setOnClickListener(secondAccountListener);
             userThirdPhoto.setOnClickListener(thirdAccountListener);
         }
@@ -628,11 +631,13 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
                         // si fa il rapporto in 16 : 9
                         heightCover = (9 * width) / 16;
 
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                             heightCover += (int) (24 * density);
+                        }
 
-                        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT && kitkatTraslucentStatusbar)
+                        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT && kitkatTraslucentStatusbar) {
                             heightCover += (int) (25 * density);
+                        }
 
                         break;
                     case DRAWERHEADER_NO_HEADER:
@@ -710,8 +715,9 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
             }
 
             section = sectionList.get(defaultSectionLoaded);
-            if (section.getTarget() != MaterialSection.TARGET_FRAGMENT)
+            if (section.getTarget() != MaterialSection.TARGET_FRAGMENT) {
                 throw new RuntimeException("The first section added must have a fragment as target");
+            }
         } else {
             ArrayList<Integer> accountNumbers = savedInstanceState.getIntegerArrayList(STATE_ACCOUNT);
 
@@ -730,8 +736,9 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
             int sectionListType = savedInstanceState.getInt(STATE_LIST);
             if (sectionListType == Element.TYPE_SECTION) {
                 section = sectionList.get(sectionSelected);
-            } else
+            } else {
                 section = bottomSectionList.get(sectionSelected);
+            }
 
             if (section.getTarget() != MaterialSection.TARGET_FRAGMENT) {
                 section = sectionList.get(0);
@@ -800,9 +807,10 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
         } else {
             switch (item.getItemId()) {
                 // Respond to the action bar's Up/Home button
-                case android.R.id.home:
+                case android.R.id.home: {
                     toolbarToggleListener.onClick(null);
                     return true;
+                }
             }
         }
         return super.onOptionsItemSelected(item);
@@ -812,8 +820,9 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
-        if (pulsante != null)
+        if (pulsante != null) {
             pulsante.syncState();
+        }
     }
 
     @Override
@@ -892,10 +901,11 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
                     // user comed back to master section
                     isCurrentFragmentChild = false;
 
-                    if (!deviceSupportMultiPane())
+                    if (!deviceSupportMultiPane()) {
                         pulsante.setDrawerIndicatorEnabled(true);
-                    else
+                    } else {
                         actionBar.setDisplayHomeAsUpEnabled(false);
+                    }
                 }
             }
         }
@@ -940,23 +950,17 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
      * Method used with BACKPATTERN_CUSTOM to retrieve the section which is restored
      *
      * @param currentSection the section used at this time
-     * @return the Section to restore that has Fragment as target (or currentSection for exit from activity)
+     * @return the Section to restore that has Fragment as target (or currentSection for exit from
+     * activity)
      */
     protected MaterialSection backToSection(MaterialSection currentSection) {
         return currentSection;
     }
 
     /**
-     * Set the section informations.
-     * <p>
-     * In short:
-     * <ul>
-     * <li>set the section title into the toolbar</li>
-     * <li>set the section color to the toolbar</li>
-     * <li>open/call the target</li>
-     * </ul>
-     * <p>
-     * This method is equal to a user tap on a drawer section.
+     * Set the section informations. <p> In short: <ul> <li>set the section title into the
+     * toolbar</li> <li>set the section color to the toolbar</li> <li>open/call the target</li>
+     * </ul> <p> This method is equal to a user tap on a drawer section.
      *
      * @param section the section which is replaced
      */
@@ -967,8 +971,9 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
             case MaterialSection.TARGET_FRAGMENT:
                 // se l'utente clicca sulla stessa schermata in cui si trova si chiude il drawer e basta
                 if (section == currentSection) {
-                    if (!deviceSupportMultiPane())
+                    if (!deviceSupportMultiPane()) {
                         layout.closeDrawer(drawer);
+                    }
                     return;
                 }
                 changeToolbarColor(section);
@@ -977,14 +982,16 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
                 break;
             case MaterialSection.TARGET_ACTIVITY:
                 this.startActivity(section.getTargetIntent());
-                if (!deviceSupportMultiPane())
+                if (!deviceSupportMultiPane()) {
                     layout.closeDrawer(drawer);
+                }
                 break;
             case MaterialSection.TARGET_LISTENER:
                 // call the section listener
                 section.getTargetListener().onClick(section);
-                if (!deviceSupportMultiPane())
+                if (!deviceSupportMultiPane()) {
                     layout.closeDrawer(drawer);
+                }
 
             default:
                 break;
@@ -997,12 +1004,11 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     }
 
     /**
-     * Set the fragment to the activity content.
-     * <p>
-     * N.B. If you want to support the master/child flow, please consider to use setFragmentChild instead
+     * Set the fragment to the activity content. <p> N.B. If you want to support the master/child
+     * flow, please consider to use setFragmentChild instead
      *
      * @param fragment to replace into the main content
-     * @param title    to set into Toolbar
+     * @param title to set into Toolbar
      */
     public void setFragment(Fragment fragment, String title) {
         setFragment(fragment, title, null);
@@ -1036,35 +1042,43 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
 
             if (!hasSavedInstanceState) {
                 android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                if (oldFragment != null && oldFragment != fragment)
+                if (oldFragment != null && oldFragment != fragment) {
                     ft.remove((android.support.v4.app.Fragment) oldFragment);
+                }
 
                 ft.replace(R.id.frame_container, (android.support.v4.app.Fragment) fragment).commit();
             }
         } else if (fragment instanceof android.app.Fragment) {
-            if (oldFragment instanceof android.support.v4.app.Fragment)
+            if (oldFragment instanceof android.support.v4.app.Fragment) {
                 throw new RuntimeException("You should use only one type of Fragment");
+            }
 
             if (!hasSavedInstanceState) {// se non e' avvenuta una rotazione
 
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
-                if (oldFragment != null && fragment != oldFragment)
+                if (oldFragment != null && fragment != oldFragment) {
                     ft.remove((android.app.Fragment) oldFragment);
+                }
 
                 ft.replace(R.id.frame_container, (android.app.Fragment) fragment).commit();
             }
         } else if (fragment instanceof android.support.v4.app.Fragment) {
-            if (oldFragment instanceof android.app.Fragment)
+            if (oldFragment instanceof android.app.Fragment) {
                 throw new RuntimeException("You should use only one type of Fragment");
+            }
 
             android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            if (oldFragment != null && oldFragment != fragment)
+            if (oldFragment != null && oldFragment != fragment) {
                 ft.remove((android.support.v4.app.Fragment) oldFragment);
+            }
 
             if (!hasSavedInstanceState) // se non e' avvenuta una rotazione
+            {
                 ft.replace(R.id.frame_container, (android.support.v4.app.Fragment) fragment).commit();
-        } else
+            }
+        } else {
             throw new RuntimeException("Fragment must be android.app.Fragment or android.support.v4.app.Fragment");
+        }
 
     }
 
@@ -1073,19 +1087,20 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
         if (!isCurrentFragmentChild) {
             childFragmentStack.remove(childFragmentStack.size() - 1);
             childTitleStack.remove(childTitleStack.size() - 1);
-        } else
+        } else {
             for (int i = childFragmentStack.size() - 1; i >= 0; i--) { // if a section is clicked when user is into a child remove all childs from stack
                 childFragmentStack.remove(i);
                 childTitleStack.remove(i);
             }
+        }
 
         // add to the childStack the Fragment and title
         childFragmentStack.add(fragment);
         childTitleStack.add(title);
         isCurrentFragmentChild = false;
-        if (!deviceSupportMultiPane())
+        if (!deviceSupportMultiPane()) {
             pulsante.setDrawerIndicatorEnabled(true);
-        else {
+        } else {
             actionBar.setDisplayHomeAsUpEnabled(false);
         }
     }
@@ -1101,9 +1116,9 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
         childTitleStack.add(title);
 
         // sync the toolbar toggle state
-        if (!deviceSupportMultiPane())
+        if (!deviceSupportMultiPane()) {
             pulsante.setDrawerIndicatorEnabled(false);
-        else {
+        } else {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
@@ -1120,8 +1135,9 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
 
     private Element findElementBySection(MaterialSection section) {
         for (Element element : elementsList)
-            if (element.getElement() == section)
+            if (element.getElement() == section) {
                 return element;
+            }
 
         return null;
     }
@@ -1248,8 +1264,9 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
             // refresh views
             notifyAccountDataChanged();
 
-            if (!deviceSupportMultiPane())
+            if (!deviceSupportMultiPane()) {
                 layout.closeDrawer(drawer);
+            }
         }
     }
 
@@ -1424,9 +1441,8 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     }
 
     /**
-     * Set the HomeAsUpIndicator that is visible when user navigate to a fragment child
-     * <p>
-     * N.B. call this method AFTER the init() to leave the time to instantiate the ActionBarDrawerToggle
+     * Set the HomeAsUpIndicator that is visible when user navigate to a fragment child <p> N.B.
+     * call this method AFTER the init() to leave the time to instantiate the ActionBarDrawerToggle
      *
      * @param resId the id to resource drawable to use as indicator
      */
@@ -1485,8 +1501,8 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     }
 
     /**
-     * Set the section that will be opened when the activity starts.
-     * NOTE: 0 is for the first section
+     * Set the section that will be opened when the activity starts. NOTE: 0 is for the first
+     * section
      *
      * @param sectionNumber is the number of section that you have added in the init() method.
      */
@@ -1930,9 +1946,8 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     }
 
     /**
-     * Get a setted section knowing his title
-     * <p>
-     * N.B. this search only into section list and bottom section list.
+     * Get a setted section knowing his title <p> N.B. this search only into section list and bottom
+     * section list.
      *
      * @param title is the title of the section
      * @return the section with title or null if the section is not founded
@@ -1945,16 +1960,16 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
         }
 
         for (MaterialSection section : bottomSectionList) {
-            if (section.getTitle().equals(title))
+            if (section.getTitle().equals(title)) {
                 return section;
+            }
         }
 
         return null;
     }
 
     /**
-     * Get the section list
-     * N.B. The section list contains the bottom sections
+     * Get the section list N.B. The section list contains the bottom sections
      *
      * @return the list of sections setted
      */

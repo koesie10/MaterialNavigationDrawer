@@ -8,10 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import it.neokree.example.backpattern.BackAnywhere;
 import it.neokree.example.backpattern.BackToFirst;
 import it.neokree.example.dark.AccountsDark;
@@ -35,6 +31,8 @@ import it.neokree.example.light.CustomDrawerHeaderLight;
 import it.neokree.example.light.ImageDrawerHeaderLight;
 import it.neokree.example.light.MockedAccountLight;
 import it.neokree.example.light.NoDrawerHeaderLight;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private List<Sample> samples;

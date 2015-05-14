@@ -1,7 +1,6 @@
 package it.neokree.example.functionalities.master_child;
 
 import android.os.Bundle;
-
 import it.neokree.example.R;
 import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
 

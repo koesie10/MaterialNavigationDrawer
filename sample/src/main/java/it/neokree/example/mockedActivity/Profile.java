@@ -2,7 +2,6 @@ package it.neokree.example.mockedActivity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-
 import it.neokree.example.R;
 
 public class Profile extends AppCompatActivity {

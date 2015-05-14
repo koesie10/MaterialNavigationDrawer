@@ -7,12 +7,12 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 
 /**
- * An improved version of DrawerLayout that will ensure that a locked open DrawerLayout can be used without capturing all touches into the client
- * area.
- * <p>
- * To activate, call {@link #requestDisallowInterceptTouchEvent(boolean)} on the layout. Note that this should only ever be done in case when
- * the drawer is to be locked open.
- * </p>
+ * An improved version of DrawerLayout that will ensure that a locked open DrawerLayout can be used
+ * without capturing all touches into the client area.
+ *
+ * To activate, call {@link #requestDisallowInterceptTouchEvent(boolean)} on the layout. Note that
+ * this should only ever be done in case when the drawer is to be locked open.
+ *
  * Original source code by Rainer Burgstaller
  */
 public class MaterialDrawerLayout extends DrawerLayout {

@@ -9,7 +9,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.view.View;
-
 import it.neokree.materialnavigationdrawer.elements.listeners.MaterialSectionListener;
 import it.neokree.materialnavigationdrawer.util.Utils;
 
@@ -43,8 +42,9 @@ public class MaterialAccount {
 
         // resize and caching bitmap
         new ResizePhotoResource().execute(photo);
-        if (background != null)
+        if (background != null) {
             new ResizeBackgroundBitmap().execute(background);
+        }
 
     }
 
@@ -64,8 +64,9 @@ public class MaterialAccount {
         this.resources = resources;
 
         // resize and caching bitmap
-        if (photo != null)
+        if (photo != null) {
             new ResizePhotoBitmap().execute(photo);
+        }
         new ResizeBackgroundResource().execute(background);
     }
 
@@ -75,10 +76,12 @@ public class MaterialAccount {
         this.resources = resources;
 
         // resize and caching bitmap
-        if (photo != null)
+        if (photo != null) {
             new ResizePhotoBitmap().execute(photo);
-        if (background != null)
+        }
+        if (background != null) {
             new ResizeBackgroundBitmap().execute(background);
+        }
     }
 
     // setter
@@ -209,8 +212,9 @@ public class MaterialAccount {
         protected void onPostExecute(BitmapDrawable drawable) {
             photo = drawable;
 
-            if (listener != null)
+            if (listener != null) {
                 listener.onUserPhotoLoaded(MaterialAccount.this);
+            }
         }
     }
 
@@ -230,8 +234,9 @@ public class MaterialAccount {
         protected void onPostExecute(BitmapDrawable drawable) {
             photo = drawable;
 
-            if (listener != null)
+            if (listener != null) {
                 listener.onUserPhotoLoaded(MaterialAccount.this);
+            }
         }
     }
 
@@ -249,8 +254,9 @@ public class MaterialAccount {
         protected void onPostExecute(BitmapDrawable drawable) {
             background = drawable;
 
-            if (listener != null)
+            if (listener != null) {
                 listener.onBackgroundLoaded(MaterialAccount.this);
+            }
         }
     }
 
@@ -269,8 +275,9 @@ public class MaterialAccount {
         protected void onPostExecute(BitmapDrawable drawable) {
             background = drawable;
 
-            if (listener != null)
+            if (listener != null) {
                 listener.onBackgroundLoaded(MaterialAccount.this);
+            }
         }
     }
 }

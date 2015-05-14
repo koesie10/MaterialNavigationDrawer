@@ -37,7 +37,7 @@
         <item name="toolbarElevation">false</item>
     </style>
 
-    <style name="MaterialNavigationDrawerTheme.Light.DarkActionBar" parent="Theme.AppCompat.Light.NoActionBar" >
+    <style name="MaterialNavigationDrawerTheme.Light.DarkActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:statusBarColor">@color/transparent</item>
         <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
