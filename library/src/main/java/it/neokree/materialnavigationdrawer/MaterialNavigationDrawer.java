@@ -531,7 +531,6 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
             actionBar.setHomeButtonEnabled(true);
 
             pulsante = new MaterialActionBarDrawerToggle<Fragment>(this, layout, toolbar, R.string.nothing, R.string.nothing) {
-
                 @Override
                 public void onDrawerClosed(View view) {
                     invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
@@ -539,8 +538,9 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
                     // abilita il touch del drawer
                     setDrawerTouchable(true);
 
-                    if (drawerListener != null)
+                    if (drawerListener != null) {
                         drawerListener.onDrawerClosed(view);
+                    }
 
                     if (hasRequest()) {
                         MaterialSection section = getRequestedSection();
@@ -548,6 +548,9 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
                         setFragment((Fragment) section.getTargetFragment(), section.getTitle(), (Fragment) currentSection.getTargetFragment());
                         afterFragmentSetted((Fragment) section.getTargetFragment(), section.getTitle());
                         this.removeRequest();
+                        if (sectionSelectionListener != null) {
+                            sectionSelectionListener.onSelectSection(section);
+                        }
                     }
                 }
 
@@ -555,29 +558,32 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
                 public void onDrawerOpened(View drawerView) {
                     invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
 
-                    if (drawerListener != null)
+                    if (drawerListener != null) {
                         drawerListener.onDrawerOpened(drawerView);
+                    }
                 }
 
                 @Override
                 public void onDrawerSlide(View drawerView, float slideOffset) {
-
                     // if user wants the sliding arrow it compare
-                    if (slidingDrawerEffect)
+                    if (slidingDrawerEffect) {
                         super.onDrawerSlide(drawerView, slideOffset);
-                    else
+                    } else {
                         super.onDrawerSlide(drawerView, 0);
+                    }
 
-                    if (drawerListener != null)
+                    if (drawerListener != null) {
                         drawerListener.onDrawerSlide(drawerView, slideOffset);
+                    }
                 }
 
                 @Override
                 public void onDrawerStateChanged(int newState) {
                     super.onDrawerStateChanged(newState);
 
-                    if (drawerListener != null)
+                    if (drawerListener != null) {
                         drawerListener.onDrawerStateChanged(newState);
+                    }
                 }
             };
             pulsante.setToolbarNavigationClickListener(toolbarToggleListener);
@@ -819,24 +825,26 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
                     break;
                 case BACKPATTERN_BACK_TO_FIRST:
                     MaterialSection section = sectionList.get(0);
-                    if (currentSection == section)
+                    if (currentSection == section) {
                         super.onBackPressed();
-                    else {
+                    } else {
                         section.select();
-                        //onClick(section);
 
                         changeToolbarColor(section);
                         setFragment((Fragment) section.getTargetFragment(), section.getTitle(), (Fragment) currentSection.getTargetFragment());
                         afterFragmentSetted((Fragment) section.getTargetFragment(), section.getTitle());
                         syncSectionsState(section);
+                        if (sectionSelectionListener != null) {
+                            sectionSelectionListener.onSelectSection(section);
+                        }
                     }
                     break;
                 case BACKPATTERN_CUSTOM:
                     MaterialSection backedSection = backToSection(getCurrentSection());
 
-                    if (currentSection == backedSection)
+                    if (currentSection == backedSection) {
                         super.onBackPressed();
-                    else {
+                    } else {
                         if (backedSection.getTarget() != MaterialSection.TARGET_FRAGMENT) {
                             throw new RuntimeException("The restored section must have a fragment as target");
                         }
@@ -924,21 +932,20 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
 
     /**
      * Set the section informations.
-     *
+     * <p>
      * In short:
      * <ul>
      * <li>set the section title into the toolbar</li>
      * <li>set the section color to the toolbar</li>
      * <li>open/call the target</li>
      * </ul>
-     *
+     * <p>
      * This method is equal to a user tap on a drawer section.
      *
      * @param section the section which is replaced
      */
     public void setSection(MaterialSection section) {
         section.select();
-        syncSectionsState(section);
 
         switch (section.getTarget()) {
             case MaterialSection.TARGET_FRAGMENT:
@@ -975,7 +982,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
 
     /**
      * Set the fragment to the activity content.
-     * 
+     * <p>
      * N.B. If you want to support the master/child flow, please consider to use setFragmentChild instead
      *
      * @param fragment to replace into the main content
@@ -1273,15 +1280,12 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
                 }
             }
         }
-
-        if (sectionSelectionListener != null) {
-            sectionSelectionListener.onSelectSection(section);
-        }
     }
 
     protected int darkenColor(int color) {
-        if (color == primaryColor)
+        if (color == primaryColor) {
             return primaryDarkColor;
+        }
 
         float[] hsv = new float[3];
         Color.colorToHSV(color, hsv);
@@ -1303,12 +1307,14 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
                     changeToolbarColor(section);
                     setFragment((Fragment) section.getTargetFragment(), section.getTitle(), (Fragment) currentSection.getTargetFragment());
                     afterFragmentSetted((Fragment) section.getTargetFragment(), section.getTitle());
+                    if (sectionSelectionListener != null) {
+                        sectionSelectionListener.onSelectSection(section);
+                    }
                 } else {
                     // si disattiva il touch sul drawer
                     setDrawerTouchable(false);
                     // la chiamata al fragment viene spostata dopo la chiusura del drawer
                     pulsante.addRequest(section);
-
                     layout.closeDrawer(drawer);
                 }
                 break;
@@ -1320,8 +1326,9 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
                 break;
             // TARGET_LISTENER viene gestito internamente
             case MaterialSection.TARGET_LISTENER:
-                if (!deviceSupportMultiPane())
+                if (!deviceSupportMultiPane()) {
                     layout.closeDrawer(drawer);
+                }
 
                 if (!deviceSupportMultiPane()) {
                     setDrawerTouchable(false);
@@ -1390,7 +1397,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
 
     /**
      * Set the HomeAsUpIndicator that is visible when user navigate to a fragment child
-     *
+     * <p>
      * N.B. call this method AFTER the init() to leave the time to instantiate the ActionBarDrawerToggle
      *
      * @param resId the id to resource drawable to use as indicator
@@ -1413,7 +1420,6 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     }
 
     public void changeToolbarColor(MaterialSection section) {
-
         int sectionPrimaryColor;
         int sectionPrimaryColorDark;
 
@@ -1897,7 +1903,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
 
     /**
      * Get a setted section knowing his title
-     *
+     * <p>
      * N.B. this search only into section list and bottom section list.
      *
      * @param title is the title of the section

@@ -49,7 +49,6 @@ public class Utils {
             return res.getConfiguration().smallestScreenWidthDp >= 600;
         } else { // for devices without smallestScreenWidthDp reference calculate if device screen is over 600
             return (res.getDisplayMetrics().widthPixels / res.getDisplayMetrics().density) >= 600;
-
         }
     }
 

@@ -274,10 +274,11 @@ public class MaterialSection<Fragment> implements View.OnTouchListener, View.OnC
 
     public void select() {
         isSelected = true;
-        if (!rippleAnimationSupport())
+        if (!rippleAnimationSupport()) {
             view.setBackgroundColor(colorSelected);
-        else
+        } else {
             ripple.setRippleBackground(colorSelected);
+        }
 
         if (hasSectionColor) {
             text.setTextColor(sectionColor);
