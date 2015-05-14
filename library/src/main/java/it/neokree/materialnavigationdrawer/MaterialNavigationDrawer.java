@@ -1268,9 +1268,14 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
         // search in first list
         int position = sectionList.indexOf(section);
         if (position != -1) {
-            for (int i = 0; i < sectionList.size(); i++)
-                if (i != position)
+            for (int i = 0; i < sectionList.size(); i++) {
+                if (i != position) {
                     sectionList.get(i).unSelect();
+                }
+            }
+            for (int i = 0; i < bottomSectionList.size(); i++) {
+                bottomSectionList.get(i).unSelect();
+            }
         } else {
             // section is a bottom section
             position = bottomSectionList.indexOf(section);
@@ -1278,6 +1283,9 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
                 if (i != position) {
                     bottomSectionList.get(i).unSelect();
                 }
+            }
+            for (int i = 0; i < sectionList.size(); i++) {
+                sectionList.get(i).unSelect();
             }
         }
     }
