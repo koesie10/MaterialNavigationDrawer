@@ -107,6 +107,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
 
     // current pointers
     private MaterialSection currentSection;
+    private MaterialSection previousSection;
     private MaterialAccount currentAccount;
 
     private CharSequence title;
@@ -147,8 +148,9 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
                 }
 
                 // close drawer
-                if (!deviceSupportMultiPane())
+                if (!deviceSupportMultiPane()) {
                     layout.closeDrawer(drawer);
+                }
             }
         }
     };
@@ -160,13 +162,15 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
                 // account change
                 MaterialAccount account = findAccountNumber(MaterialAccount.SECOND_ACCOUNT);
                 if (account != null) {
-                    if (accountListener != null)
+                    if (accountListener != null) {
                         accountListener.onChangeAccount(account);
+                    }
 
                     switchAccounts(account);
                 } else {// if there is no second account user clicked for open it
-                    if (accountSwitcherListener != null && !singleAccount)
+                    if (accountSwitcherListener != null && !singleAccount) {
                         accountSwitcherListener.onClick(null);
+                    }
                 }
             }
 
@@ -181,13 +185,15 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
                 // account change
                 MaterialAccount account = findAccountNumber(MaterialAccount.THIRD_ACCOUNT);
                 if (account != null) {
-                    if (accountListener != null)
+                    if (accountListener != null) {
                         accountListener.onChangeAccount(account);
+                    }
 
                     switchAccounts(account);
                 } else {// if there is no second account user clicked for open it
-                    if (accountSwitcherListener != null && !singleAccount)
+                    if (accountSwitcherListener != null && !singleAccount) {
                         accountSwitcherListener.onClick(null);
+                    }
                 }
             }
         }
@@ -583,6 +589,13 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
                 @Override
                 public void onDrawerStateChanged(int newState) {
                     super.onDrawerStateChanged(newState);
+
+                    if (drawerTouchLocked && newState == DrawerLayout.STATE_DRAGGING) {
+                        removeRequest();
+                        setDrawerTouchable(true);
+                        previousSection.select();
+                        syncSectionsState(previousSection);
+                    }
 
                     if (drawerListener != null) {
                         drawerListener.onDrawerStateChanged(newState);
@@ -1254,6 +1267,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
         for (MaterialSection section : sectionList) {
             section.setTouchable(isTouchable);
         }
+
         for (MaterialSection section : bottomSectionList) {
             section.setTouchable(isTouchable);
         }
@@ -1266,6 +1280,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     }
 
     private void syncSectionsState(MaterialSection section) {
+        previousSection = currentSection;
         currentSection = section;
 
         // search in first list
