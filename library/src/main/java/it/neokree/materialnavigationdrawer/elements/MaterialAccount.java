@@ -156,9 +156,9 @@ public class MaterialAccount {
         return accountNumber;
     }
 
-    public View getSectionView(Context ctx, Typeface font, MaterialSectionListener listener, boolean rippleSupport, int position) {
+    public View getSectionView(Context ctx, Typeface font, MaterialSectionListener listener, boolean rippleSupport, boolean rippleDelayClick, int position) {
         if (sectionView == null) {
-            sectionView = new MaterialSection(ctx, MaterialSection.ICON_40DP, rippleSupport, MaterialSection.TARGET_LISTENER);
+            sectionView = new MaterialSection(ctx, MaterialSection.ICON_40DP, rippleSupport, rippleDelayClick, MaterialSection.TARGET_LISTENER);
             sectionView.useRealColor();
         }
 

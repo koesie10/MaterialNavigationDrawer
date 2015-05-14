@@ -118,6 +118,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     private boolean slidingDrawerEffect = false;
     private boolean multiPaneSupport;
     private boolean rippleSupport;
+    private boolean rippleDelayClick;
     private boolean uniqueToolbarColor;
     private boolean singleAccount;
     private boolean accountSwitcher = false;
@@ -208,7 +209,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
                         // si inseriscono tutti gli account ma non quello attualmente in uso || Add all account without the current one
                         if (account.getAccountNumber() != MaterialAccount.FIRST_ACCOUNT) {
                             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, (int) (56 * density));
-                            sections.addView(account.getSectionView(MaterialNavigationDrawer.this, fontManager.getRobotoMedium(), accountSectionListener, rippleSupport, account.getAccountNumber()), params);
+                            sections.addView(account.getSectionView(MaterialNavigationDrawer.this, fontManager.getRobotoMedium(), accountSectionListener, rippleSupport, rippleDelayClick, account.getAccountNumber()), params);
                         }
                     }
                     for (MaterialSection section : accountSectionList) {
@@ -358,6 +359,8 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
         drawerHeaderType = typedValue.data;
         theme.resolveAttribute(R.attr.rippleBackport, typedValue, false);
         rippleSupport = typedValue.data != 0;
+        theme.resolveAttribute(R.attr.rippleDelayClick, typedValue, false);
+        rippleDelayClick = typedValue.data != 0;
         theme.resolveAttribute(R.attr.uniqueToolbarColor, typedValue, false);
         uniqueToolbarColor = typedValue.data != 0;
         theme.resolveAttribute(R.attr.singleAccount, typedValue, false);
@@ -1708,7 +1711,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     // create sections
 
     public MaterialSection newSection(String title, Drawable icon, Fragment target) {
-        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, MaterialSection.TARGET_FRAGMENT);
+        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, rippleDelayClick, MaterialSection.TARGET_FRAGMENT);
         section.setOnClickListener(this);
         section.setIcon(icon);
         section.setTitle(title);
@@ -1718,7 +1721,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     }
 
     public MaterialSection newSectionWithRealColor(String title, Drawable icon, Fragment target) {
-        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, MaterialSection.TARGET_FRAGMENT);
+        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, rippleDelayClick, MaterialSection.TARGET_FRAGMENT);
         section.setOnClickListener(this);
         section.useRealColor();
         section.setIcon(icon);
@@ -1729,7 +1732,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     }
 
     public MaterialSection newSection(String title, Drawable icon, Intent target) {
-        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, MaterialSection.TARGET_ACTIVITY);
+        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, rippleDelayClick, MaterialSection.TARGET_ACTIVITY);
         section.setOnClickListener(this);
         section.setIcon(icon);
         section.setTitle(title);
@@ -1739,7 +1742,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     }
 
     public MaterialSection newSectionWithRealColor(String title, Drawable icon, Intent target) {
-        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, MaterialSection.TARGET_ACTIVITY);
+        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, rippleDelayClick, MaterialSection.TARGET_ACTIVITY);
         section.setOnClickListener(this);
         section.useRealColor();
         section.setIcon(icon);
@@ -1750,7 +1753,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     }
 
     public MaterialSection newSection(String title, Drawable icon, MaterialSectionListener target) {
-        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, MaterialSection.TARGET_LISTENER);
+        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, rippleDelayClick, MaterialSection.TARGET_LISTENER);
         section.setOnClickListener(this);
         section.setIcon(icon);
         section.setTitle(title);
@@ -1760,7 +1763,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     }
 
     public MaterialSection newSectionWithRealColor(String title, Drawable icon, MaterialSectionListener target) {
-        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, MaterialSection.TARGET_LISTENER);
+        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, rippleDelayClick, MaterialSection.TARGET_LISTENER);
         section.setOnClickListener(this);
         section.useRealColor();
         section.setIcon(icon);
@@ -1771,7 +1774,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     }
 
     public MaterialSection newSection(String title, Bitmap icon, Fragment target) {
-        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, MaterialSection.TARGET_FRAGMENT);
+        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, rippleDelayClick, MaterialSection.TARGET_FRAGMENT);
         section.setOnClickListener(this);
         section.setIcon(icon);
         section.setTitle(title);
@@ -1781,7 +1784,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     }
 
     public MaterialSection newSectionWithRealColor(String title, Bitmap icon, Fragment target) {
-        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, MaterialSection.TARGET_FRAGMENT);
+        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, rippleDelayClick, MaterialSection.TARGET_FRAGMENT);
         section.setOnClickListener(this);
         section.useRealColor();
         section.setIcon(icon);
@@ -1792,7 +1795,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     }
 
     public MaterialSection newSection(String title, Bitmap icon, Intent target) {
-        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, MaterialSection.TARGET_ACTIVITY);
+        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, rippleDelayClick, MaterialSection.TARGET_ACTIVITY);
         section.setOnClickListener(this);
         section.setIcon(icon);
         section.setTitle(title);
@@ -1802,7 +1805,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     }
 
     public MaterialSection newSectionWithRealColor(String title, Bitmap icon, Intent target) {
-        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, MaterialSection.TARGET_ACTIVITY);
+        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, rippleDelayClick, MaterialSection.TARGET_ACTIVITY);
         section.setOnClickListener(this);
         section.useRealColor();
         section.setIcon(icon);
@@ -1813,7 +1816,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     }
 
     public MaterialSection newSection(String title, Bitmap icon, MaterialSectionListener target) {
-        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, MaterialSection.TARGET_LISTENER);
+        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, rippleDelayClick, MaterialSection.TARGET_LISTENER);
         section.setOnClickListener(this);
         section.setIcon(icon);
         section.setTitle(title);
@@ -1823,7 +1826,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
     }
 
     public MaterialSection newSectionWithRealColor(String title, Bitmap icon, MaterialSectionListener target) {
-        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, MaterialSection.TARGET_LISTENER);
+        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_24DP, rippleSupport, rippleDelayClick, MaterialSection.TARGET_LISTENER);
         section.setOnClickListener(this);
         section.useRealColor();
         section.setIcon(icon);
@@ -1859,7 +1862,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
 
     @SuppressWarnings("unchecked")
     public MaterialSection newSection(String title, Fragment target) {
-        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_NO_ICON, rippleSupport, MaterialSection.TARGET_FRAGMENT);
+        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_NO_ICON, rippleSupport, rippleDelayClick, MaterialSection.TARGET_FRAGMENT);
         section.setOnClickListener(this);
         section.setTitle(title);
         section.setTarget(target);
@@ -1869,7 +1872,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
 
     @SuppressWarnings("unchecked")
     public MaterialSection newSection(String title, Intent target) {
-        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_NO_ICON, rippleSupport, MaterialSection.TARGET_ACTIVITY);
+        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_NO_ICON, rippleSupport, rippleDelayClick, MaterialSection.TARGET_ACTIVITY);
         section.setOnClickListener(this);
         section.setTitle(title);
         section.setTarget(target);
@@ -1879,7 +1882,7 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
 
     @SuppressWarnings("unchecked")
     public MaterialSection newSection(String title, MaterialSectionListener target) {
-        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_NO_ICON, rippleSupport, MaterialSection.TARGET_LISTENER);
+        MaterialSection section = new MaterialSection<Fragment>(this, MaterialSection.ICON_NO_ICON, rippleSupport, rippleDelayClick, MaterialSection.TARGET_LISTENER);
         section.setOnClickListener(this);
         section.setTitle(title);
         section.setTarget(target);

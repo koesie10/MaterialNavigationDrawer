@@ -5,6 +5,7 @@
         <item name="drawerType">@integer/DRAWERTYPE_ACCOUNTS</item>
         <item name="drawerColor">#ff303030</item>
         <item name="rippleBackport">false</item>
+        <item name="rippleDelayClick">true</item>
         <item name="uniqueToolbarColor">false</item>
         <item name="singleAccount">false</item>
         <item name="multipaneSupport">false</item>
@@ -20,6 +21,7 @@
         <item name="drawerType">@integer/DRAWERTYPE_ACCOUNTS</item>
         <item name="drawerColor">#ffeeeeee</item>
         <item name="rippleBackport">false</item>
+        <item name="rippleDelayClick">true</item>
         <item name="uniqueToolbarColor">false</item>
         <item name="singleAccount">false</item>
         <item name="multipaneSupport">false</item>
@@ -37,6 +39,7 @@
         <item name="drawerType">@integer/DRAWERTYPE_ACCOUNTS</item>
         <item name="drawerColor">#ffeeeeee</item>
         <item name="rippleBackport">false</item>
+        <item name="rippleDelayClick">true</item>
         <item name="uniqueToolbarColor">false</item>
         <item name="singleAccount">false</item>
         <item name="multipaneSupport">false</item>

@@ -8,11 +8,11 @@
         <attr name="sectionBackgroundColorPressed" format="color"/>
         <attr name="sectionBackgroundColorSelected" format="color"/>
         <attr name="sectionBackgroundColor" format="color"/>
-        <attr name="sectionRippleDelayClick" format="boolean"/>
     </declare-styleable>
 
     <declare-styleable name="MaterialNavigationDrawer">
         <attr name="rippleBackport" format="boolean"/>
+        <attr name="rippleDelayClick" format="boolean"/>
         <!-- supporto del ripple nelle versioni precedenti di android -->
         <attr name="drawerType" format="integer"/>
         <!-- Tipologia del drawer -->

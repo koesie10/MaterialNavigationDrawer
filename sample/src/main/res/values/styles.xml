@@ -116,7 +116,7 @@
         <item name="colorAccent">#FFFFFF</item>
         <item name="drawerType">@integer/DRAWERTYPE_NO_HEADER</item>
         <item name="rippleBackport">true</item>
-        <item name="sectionStyle">@style/RippleNoDelayClick.Section</item>
+        <item name="rippleDelayClick">false</item>
     </style>
 
     <!-- Multipane Support for tablets -->
@@ -198,10 +198,6 @@
         <item name="colorPrimaryDark">#558b2f</item>
         <item name="colorAccent">#FFFFFF</item>
         <item name="multipaneSupport">true</item>
-    </style>
-
-    <style name="RippleNoDelayClick.Section" parent="MaterialSectionTheme.Light">
-        <item name="sectionRippleDelayClick">false</item>
     </style>
 
 </resources>
