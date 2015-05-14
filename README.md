@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.koenv:MaterialNavigationDrawer:1.3.4'
+    compile 'com.koenv:MaterialNavigationDrawer:1.3.5'
 }
 ```
 
