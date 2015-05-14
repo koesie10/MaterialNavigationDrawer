@@ -1325,7 +1325,9 @@ public abstract class MaterialNavigationDrawer<Fragment> extends AppCompatActivi
             case MaterialSection.TARGET_FRAGMENT:
                 // se l'utente clicca sulla stessa schermata in cui si trova si chiude il drawer e basta
                 if (section == currentSection) {
-                    layout.closeDrawer(drawer);
+                    if (!deviceSupportMultiPane()) {
+                        layout.closeDrawer(drawer);
+                    }
                     return;
                 }
 
