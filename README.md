@@ -14,13 +14,20 @@ Check the [wiki page](https://github.com/koesie10/MaterialNavigationDrawer/wiki/
 Add this to your build.gradle:
 ```java 
 repositories {
-    maven {
-        url  "http://dl.bintray.com/koesie10/maven" 
-    }
+    jcenter()
 }
 
 dependencies {
     compile 'com.koenv:MaterialNavigationDrawer:1.3.5'
+}
+```
+
+If JCenter isn't working for you, add this instead:
+```java
+repositories {
+	maven {
+        url  "http://dl.bintray.com/koesie10/maven" 
+    }
 }
 ```
 
