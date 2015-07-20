@@ -1,4 +1,5 @@
 <it.neokree.materialnavigationdrawer.util.MaterialDrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,6 +22,8 @@
             android:layout_height="?attr/actionBarSize"
             android:layout_width="match_parent"
             android:background="?attr/colorPrimary"
+            android:theme="?attr/toolbarTheme"
+            app:popupTheme="?attr/toolbarPopupTheme"
             android:layout_below="@+id/statusBar" />
 
         <FrameLayout

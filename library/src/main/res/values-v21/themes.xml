@@ -2,6 +2,8 @@
 <resources>
 
     <style name="MaterialNavigationDrawerTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="toolbarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:statusBarColor">@color/transparent</item>
         <item name="drawerType">@integer/DRAWERTYPE_ACCOUNTS</item>
@@ -20,6 +22,8 @@
     </style>
 
     <style name="MaterialNavigationDrawerTheme.Light" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="toolbarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:statusBarColor">@color/transparent</item>
         <item name="drawerType">@integer/DRAWERTYPE_ACCOUNTS</item>
@@ -40,8 +44,8 @@
     <style name="MaterialNavigationDrawerTheme.Light.DarkActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:statusBarColor">@color/transparent</item>
-        <item name="theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
-        <item name="popupTheme">@style/Base.V21.Theme.AppCompat.Light.Dialog</item>
+        <item name="toolbarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="toolbarPopupTheme">@style/ThemeOverlay.AppCompat.Dark</item>
         <item name="drawerType">@integer/DRAWERTYPE_ACCOUNTS</item>
         <item name="drawerColor">#ffeeeeee</item>
         <item name="rippleBackport">true</item>

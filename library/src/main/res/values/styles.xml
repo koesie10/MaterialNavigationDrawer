@@ -31,6 +31,9 @@
         <attr name="defaultSectionLoaded" format="integer" />
         <!-- la prima section ad essere caricata -->
         <attr name="toolbarElevation" format="boolean" />
+
+        <attr name="toolbarTheme" format="reference" />
+        <attr name="toolbarPopupTheme" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="MaterialSubheader">
