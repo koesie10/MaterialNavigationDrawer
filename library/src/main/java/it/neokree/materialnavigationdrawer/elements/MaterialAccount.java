@@ -226,7 +226,15 @@ public class MaterialAccount {
 
             Bitmap photo = Utils.resizeBitmap(params[0], photoSize.x, photoSize.y);
 
-            circularPhoto = new BitmapDrawable(resources, Utils.getCroppedBitmapDrawable(photo));
+            Bitmap croppedBitmap;
+            try {
+                croppedBitmap = Utils.getCroppedBitmapDrawable(photo);
+            } catch (RuntimeException e) {
+                // this will just show an empty bitmap
+                return null;
+            }
+
+            circularPhoto = new BitmapDrawable(resources, croppedBitmap);
             return new BitmapDrawable(resources, photo);
         }
 
